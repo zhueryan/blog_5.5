@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//闭包路由
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//输出服务器当前时间
+Route::get('now', function () {
+    return date("Y-m-d H:i:s");
+});
+
+
