@@ -15,11 +15,26 @@ class ArticleController extends Controller
     public function create(){
         return view('admin/article/create');
     }
+    public function edit($id){
+        return view('admin/article/edit')->withArticle(Article::find($id));
+    }
 
     public function destroy($id)
     {
         Article::find($id)->delete();
         return redirect()->back()->withInput()->withErrors('删除成功！');
+    }
+
+    public function update($id){
+        $article =  Article::find($id);
+        $article->title = request()->title;
+        $article->body = request()->body;
+        if ($article->save()) {
+            return redirect('admin/articles/'.$id.'/edit')->withErrors('保存成功！');; // 保存成功，跳转到 文章详情页
+        } else {
+            // 保存失败，跳回来路页面，保留用户的输入，并给出提示
+            return redirect()->back()->withInput()->withErrors('保存失败！');
+        }
     }
 
     public function store(Request $request) // Laravel 的依赖注入系统会自动初始化我们需要的 Request 类
