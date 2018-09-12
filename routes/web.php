@@ -19,10 +19,10 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-//输出服务器当前时间
-Route::get('now', function () {
-    return date("Y-m-d H:i:s");
-});
+////输出服务器当前时间
+//Route::get('now', function () {
+//    return date("Y-m-d H:i:s");
+//});
 
 Route::group(['middleware'=>'auth','namespace'=>'Admin','prefix'=>'admin'],function(){
     Route::get('/','HomeController@index');
