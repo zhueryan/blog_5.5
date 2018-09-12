@@ -13,7 +13,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //强制登录
+//        $this->middleware('auth');
     }
 
     /**
@@ -23,7 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        throw new \Exception("我故意的",1);
+
+//        throw new \Exception("我故意的",1);
+        return view('home')->withArticles(\App\Article::all());
+
         return view('home');
     }
 }
