@@ -29,5 +29,5 @@ Route::group(['middleware'=>'auth','namespace'=>'Admin','prefix'=>'admin'],funct
 //    Route::get('article', 'ArticleController@index');
     Route::resource('articles','ArticleController');
 });
-
-
+Route::get('article/{id}', 'ArticleController@show');
+Route::post('comment', 'CommentController@store');

@@ -59,4 +59,6 @@ class ArticleController extends Controller
             return redirect()->back()->withInput()->withErrors('保存失败！');
         }
     }
+
+
 }
